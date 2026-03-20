@@ -31,7 +31,7 @@ Uses EVPN route types 1 and 4 (I hope to write post about them later, as I previ
 
 There are some caveats:
 
-1. Core isolation
+#### 1\. Core isolation
 
 In case of one Leaf losing connetion to all Spines, half of the traffic from external switch is blackholed so you should implement core isolation prevention.
 
@@ -40,12 +40,11 @@ Some reading on that:
 * [Cisco](https://www.ciscolive.com/c/dam/r/ciscolive/global-event/docs/2025/pdf/TACENT-2026.pdf)
 * [Juniper](https://www.juniper.net/documentation/us/en/software/junos/evpn/topics/concept/evpn-vxlan-core-isolation-disabling.html)
 
-
-2. Vendor support
+#### 2\. Vendor support
 
 Some vendors ignored EVPN-MH for a long time and some OS has no support for route types 1 and 4. Cisco for example.
 
-3. DCI
+#### 3\. DCI
 
 In case of DCI swithes that also play the BGW role (not really uncommon in small DC) there is a problem in case of eBGP AS design:
 
@@ -60,17 +59,16 @@ Some reading on that:
 
 This method uses familiar vPC pairs. Nothing really new to say, if you are familiar with vPC.
 
-VPC obligatory read: [vPC_design_guide](https://www.cisco.com/c/dam/en/us/td/docs/switches/datacenter/sw/design/vpc_design/vpc_best_practices_design_guide.pdf)
-
+VPC obligatory read: [vPC_design_guide](https://www.cisco.com/c/dam/en/us/td/docs/switches/datacenter/sw/design/vpc_design/vpc_best_practices_design_guide.pdf)  
 EVPN addtional read: [ciscolive](https://www.ciscolive.com/c/dam/r/ciscolive/emea/docs/2025/pdf/BRKDCN-2912.pdf)
 
 There are some caveats:
 
-1. vPC implementation
+#### 1\. vPC implementation
 
 All the standard design restrictions are there. Some vendors implementations are questionable (Cumulus uses peer-keepalive not as keepalive but as reserve so GL with 200g peer-link failure into 1g copper as reserve peer-link for those who don't expect this). Loop avoidance mechanism is still there so you have to account for that in VXLAN/EVPN environment.
 
-2. Peer-link traffic
+#### 2\. Peer-link traffic
 
 As vPC uses virtual IP as a VTEP IP in case where most the connections to the servers are non-aggregated (orphans). Route type 2 is advertised bt VIP, not PIP even in case of orphans. As example - some virtualisation solutions recommend using load-balancing without aggregation. So in this case half of the traffic is balanced to the wrong switch in pair, which in extreme case can overload peer-link.
 
