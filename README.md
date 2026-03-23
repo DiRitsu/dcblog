@@ -1,2 +1,2 @@
 # dcblog
-IV is trying to build a good datacenter.
+what even datacenter network infrastructure is anyway?
