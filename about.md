@@ -14,3 +14,8 @@ If you think any information on this site is incorrect, have good book or articl
 feel free to ping me by email: diritsu@gmail.com
 
 Always test before implementing something.
+
+###Disclaimer
+The opinions expressed in blog posts are entirely the author’s opinions.
+I make no representation or warranty of any kind, express or implied, regarding the accuracy, adequacy, validity, reliability, availability, or completeness of any information in this blog.
+Some examples may be outdated and some links may be broken.
